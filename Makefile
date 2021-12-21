@@ -6,3 +6,4 @@ deploy:
 	git rebase main
 	git checkout main
 	git merge develop
+	git push
