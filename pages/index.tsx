@@ -7,8 +7,9 @@ export default function Home() {
   useEffect(() => {
     setTimeout(() => {
       fetch('/api/weather/forecast').then(r => r.json()).then(({data}) => {
+        console.log(data)
         setData(data)
-      })
+      }).catch(console.error)
     },2000)
   },[])
   return (
@@ -21,7 +22,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className="text-7xl">Hello NextJS</h1>
-        {data?.city?.name}
+       CITY: {data?.city?.name}
       </main>
 
       <footer className={styles.footer}></footer>

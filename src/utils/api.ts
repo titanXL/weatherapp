@@ -7,7 +7,7 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((cfg) => {
-  cfg.params = { ...cfg.params, appid: process.env.WEATHER_KEY };
+  cfg.params = { ...cfg.params, appid: process.env.NEXT_PUBLIC_WEATHER_KEY };
 
   return cfg;
 });
