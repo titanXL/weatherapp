@@ -10,6 +10,6 @@ export const getForecastForCity = async (city: string): Promise<unknown> => {
     return response.data;
   } catch (error) {
     // Handle Error
-    console.error(error);
+    console.error(error.message);
   }
 };
