@@ -1,7 +1,16 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const [data, setData] = useState(null)
+  useEffect(() => {
+    setTimeout(() => {
+      fetch('/api/weather/forecast').then(r => r.json()).then(({data}) => {
+        setData(data)
+      })
+    },2000)
+  },[])
   return (
     <div className={styles.container}>
       <Head>
@@ -12,6 +21,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className="text-7xl">Hello NextJS</h1>
+        {data?.city?.name}
       </main>
 
       <footer className={styles.footer}></footer>
