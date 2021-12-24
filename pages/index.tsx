@@ -1,17 +1,11 @@
+import { ForecastData } from "@/services/weather/types";
+import * as forecastService from "@/services/weather/forecast";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
-  const [data, setData] = useState(null)
-  useEffect(() => {
-    setTimeout(() => {
-      fetch('/api/weather/forecast').then(r => r.json()).then(({data}) => {
-        console.log(data)
-        setData(data)
-      }).catch(console.error)
-    },2000)
-  },[])
+export default function Home({ forecast }: ForecastData) {
+  console.log(forecast);
   return (
     <div className={styles.container}>
       <Head>
@@ -20,12 +14,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main>
         <h1 className="text-7xl">Hello NextJS</h1>
-       CITY: {data?.city?.name}
+        CITY:
       </main>
 
       <footer className={styles.footer}></footer>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const forecast = await forecastService.getForecastForCity("Sofia");
+
+  return {
+    props: forecast,
+    // revalidate: 86400
+  };
 }
