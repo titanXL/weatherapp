@@ -1,7 +1,9 @@
 import api from "@/utils/api";
 import { ForecastApiResponse, ForecastData, ForecastDetails } from "./types";
 
-export const getForecastForCity = async (city: string): Promise<unknown> => {
+export const getForecastForCity = async (
+  city: string
+): Promise<ForecastData> => {
   try {
     const response = await api.get<ForecastApiResponse>(`/forecast`, {
       params: {
@@ -15,6 +17,9 @@ export const getForecastForCity = async (city: string): Promise<unknown> => {
     throw new Error(error);
   }
 };
+
+export const getForecastForSofia = async (): Promise<ForecastData> =>
+  await getForecastForCity("Sofia");
 
 // Domain Converter
 const mapForecastResponseToDomain = (
