@@ -18,8 +18,10 @@ export const getForecastForCity = async (
   }
 };
 
-export const getForecastForSofia = async (): Promise<ForecastData> =>
-  await getForecastForCity("Sofia");
+export const getDefaultLocation = () => "Sofia";
+
+export const getForecastForDefaultLocation = async (): Promise<ForecastData> =>
+  await getForecastForCity(getDefaultLocation());
 
 // Domain Converter
 const mapForecastResponseToDomain = (
