@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { ForecastData } from "@/services/weather/types";
 import * as forecastService from "@/services/weather/forecast";
 import Head from "next/head";
-import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home({ forecast }: ForecastData) {
