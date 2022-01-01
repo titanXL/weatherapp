@@ -29,6 +29,6 @@ export async function getStaticProps() {
 
   return {
     props: forecast,
-    // revalidate: 86400
+    revalidate: 10800, // 3 hours
   };
 }
