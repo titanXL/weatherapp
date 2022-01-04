@@ -52,8 +52,14 @@ export interface ForecastApiResponseDetails {
   dt_txt: string;
 }
 
-export interface ForecastApiResponse {
-  cod: string;
+type ApiStatusCodesFail = "404" | "500";
+export interface ForecastApiResponseFail {
+  message: string;
+  cod: ApiStatusCodesFail;
+}
+
+export interface ForecastApiResponseSuccess {
+  cod: "200";
   message: number;
   cnt: number;
   list: Array<ForecastApiResponseDetails>;
@@ -70,6 +76,10 @@ export interface ForecastApiResponse {
     sunset: number;
   };
 }
+
+export type ForecastApiResponse =
+  | ForecastApiResponseFail
+  | ForecastApiResponseSuccess;
 
 export interface ForecastDetails {
   temp: number;

@@ -1,31 +1,37 @@
+import { makeEntity, MappedEntity } from "./../utils";
 import api from "@/utils/api";
-import { ForecastApiResponse, ForecastData, ForecastDetails } from "./types";
+import {
+  ForecastApiResponse,
+  ForecastApiResponseSuccess,
+  ForecastData,
+  ForecastDetails,
+} from "./types";
 
 export const getForecastForCity = async (
   city: string
-): Promise<ForecastData> => {
+): Promise<MappedEntity<ForecastData>> => {
   try {
-    const response = await api.get<ForecastApiResponse>(`/forecast`, {
+    const response = await api.get<ForecastApiResponseSuccess>(`/forecast`, {
       params: {
         q: city,
       },
     });
-    return mapForecastResponseToDomain(response.data);
+    return makeEntity(mapForecastResponseToDomain(response.data));
   } catch (error) {
-    // Handle Error
-    console.error(error.message);
-    throw new Error(error);
+    // Handle Error.
+    return makeEntity(null, new Error(error.response.data.message));
   }
 };
 
 export const getDefaultLocation = () => "Sofia";
 
-export const getForecastForDefaultLocation = async (): Promise<ForecastData> =>
-  await getForecastForCity(getDefaultLocation());
+export const getForecastForDefaultLocation = async (): Promise<
+  MappedEntity<ForecastData>
+> => await getForecastForCity(getDefaultLocation());
 
 // Domain Converter
 const mapForecastResponseToDomain = (
-  weatherData: ForecastApiResponse
+  weatherData: ForecastApiResponseSuccess
 ): ForecastData => {
   const forecastDetails: Array<ForecastDetails> = weatherData.list.map((d) => {
     return {

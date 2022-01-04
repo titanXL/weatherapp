@@ -1,8 +1,19 @@
-import { AppProps } from 'next/app'
-import '../styles/globals.css'
+import { ForecastProvider } from "@/providers/Forecast";
+import { LoadingProvider } from "@/providers/Loading";
+import { ToastsProvider } from "@/providers/ToastProvider";
+import { AppProps } from "next/app";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <LoadingProvider>
+      <ToastsProvider>
+        <ForecastProvider>
+          <Component {...pageProps} />
+        </ForecastProvider>
+      </ToastsProvider>
+    </LoadingProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
