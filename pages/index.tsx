@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { SearchBar } from "@/components/SearchBar";
 import { Toasts } from "@/containers/Toasts";
+import { ForecastDetails } from "@/components/ForecastDetails";
 
 export default function Home() {
   return (
@@ -14,9 +15,8 @@ export default function Home() {
       <section>
         <SearchBar />
       </section>
-      <main className="container mx-auto">
-        <h1 className="text-7xl">Hello NextJS</h1>
-        CITY:
+      <main className="container mx-auto p-4">
+        <ForecastDetails />
       </main>
     </>
   );
