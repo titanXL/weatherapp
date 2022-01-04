@@ -14,7 +14,7 @@ export default function Home() {
       <section>
         <SearchBar />
       </section>
-      <main>
+      <main className="container mx-auto">
         <h1 className="text-7xl">Hello NextJS</h1>
         CITY:
       </main>
