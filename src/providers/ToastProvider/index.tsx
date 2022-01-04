@@ -18,12 +18,10 @@ const ToastsContext = createContext<Context>(null);
 const ToastsProvider: React.FC = ({ children }) => {
   const [toasts, setToasts] = useState<Array<Toast>>([]);
   const clearToast = useCallback((notification: Toast) => {
-    const foundNotificationIndex = toasts.findIndex(
-      (n) => n.id === notification.id
-    );
+    const toastIndex = toasts.findIndex((n) => n.id === notification.id);
     setToasts((nfs) => [
-      ...nfs.splice(foundNotificationIndex, 1),
-      ...nfs.splice(foundNotificationIndex + 1),
+      ...nfs.splice(toastIndex, 1),
+      ...nfs.splice(toastIndex + 1),
     ]);
   }, []);
 
