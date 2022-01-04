@@ -1,5 +1,3 @@
-import { ForecastData } from "@/services/weather/types";
-import * as forecastService from "@/services/weather/forecast";
 import Head from "next/head";
 import { SearchBar } from "@/components/SearchBar";
 import { Toasts } from "@/containers/Toasts";

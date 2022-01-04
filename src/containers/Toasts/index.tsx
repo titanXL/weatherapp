@@ -1,14 +1,14 @@
-import { Toast } from "@/components/Toast";
+import { Toasty } from "@/components/Toasty";
 import { useToasts } from "@/providers/ToastProvider";
 
 interface Props {}
 
 const Toasts: React.FC<Props> = () => {
-  const { toasts } = useToasts();
+  const { toasts, clearAll } = useToasts();
   return (
-    <div>
+    <div className="fixed bottom-0 left-0 right-0" onClick={clearAll}>
       {toasts.map((t) => (
-        <Toast key={t.id} />
+        <Toasty toast={t} key={t.id} />
       ))}
     </div>
   );

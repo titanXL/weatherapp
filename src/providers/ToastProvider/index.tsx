@@ -11,6 +11,7 @@ interface Context {
   toasts: Array<Toast>;
   setToast: (message: string) => void;
   clearToast: (notification: Toast) => void;
+  clearAll: () => void;
 }
 
 const ToastsContext = createContext<Context>(null);
@@ -25,12 +26,14 @@ const ToastsProvider: React.FC = ({ children }) => {
     ]);
   }, []);
 
+  const clearAll = useCallback(() => setToasts([]), []);
+
   const setToast = useCallback((message: string) => {
     setToasts((nfs) => [new Toast(message), ...nfs]);
   }, []);
   const value = useMemo(
-    () => ({ toasts, setToast, clearToast }),
-    [clearToast, setToast, toasts]
+    () => ({ toasts, setToast, clearToast, clearAll }),
+    [clearAll, clearToast, setToast, toasts]
   );
 
   return (

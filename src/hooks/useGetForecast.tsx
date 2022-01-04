@@ -11,6 +11,7 @@ const useGetForecast = () => {
   const [data, setForecast] = useState<ForecastData>(null);
   const doFetch = useCallback(async (city: string) => {
     loading.on("search");
+    toastity.clearAll();
     const response = await getForecastForCity(city);
     loading.off();
 

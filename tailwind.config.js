@@ -1,10 +1,19 @@
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./src/**/*.{jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "slide-in": "slideIn .3s linear",
+      },
+      keyframes: {
+        slideIn: {
+          "0% ": { transform: "translateY(100%)" },
+          "100%": {
+            transform: "translateY(0)",
+          },
+        },
+      },
+    },
   },
   plugins: [],
 };
