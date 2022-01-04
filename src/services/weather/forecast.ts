@@ -1,12 +1,7 @@
 import { makeEntity, MappedEntity } from "./../utils";
-import api from "@/utils/api";
-import {
-  ForecastApiResponse,
-  ForecastApiResponseSuccess,
-  ForecastData,
-  ForecastDetails,
-} from "./types";
+import { ForecastApiResponseSuccess, ForecastData } from "./types";
 import { getDate, getHours, getMonth, parseJSON } from "date-fns";
+import api from "@/utils/api";
 
 export const getForecastForCity = async (
   city: string
