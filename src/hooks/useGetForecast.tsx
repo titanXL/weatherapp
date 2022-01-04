@@ -16,7 +16,6 @@ const useGetForecast = () => {
     loading.off();
 
     if (response.value) {
-      console.log("SUCCESS", response.value);
       setForecast(response.value);
     } else {
       toastity.setToast(response.error.message);

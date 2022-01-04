@@ -10,7 +10,7 @@ const SeachButton: React.FC<Props> = ({ disabled }) => {
   const isLoading = loading === "search";
   return (
     <button
-      className="bg-gray-600 text-white px-4 py-[2px] rounded-tr-sm rounded-br-sm font-light disabled:cursor-not-allowed disabled:text-gray-300"
+      className="bg-gray-600 text-white px-4 p-1 rounded-tr-sm rounded-br-sm font-light disabled:cursor-not-allowed disabled:text-gray-300"
       type="submit"
       disabled={disabled || isLoading}
     >

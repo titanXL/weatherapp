@@ -7,7 +7,7 @@ export const ICONS = {
   "10d": "/icons/10d.png",
   "11d": "/icons/11d.png",
   "13d": "/icons/13d.png",
-  "14d": "/icons/50d.png",
+  "50d": "/icons/50d.png",
   "01n": "/icons/01d.png",
   "02n": "/icons/02d.png",
   "03n": "/icons/03d.png",

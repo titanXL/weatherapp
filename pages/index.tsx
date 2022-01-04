@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { SearchBar } from "@/components/SearchBar";
 import { Toasts } from "@/containers/Toasts";
-import { ForecastDetails } from "@/components/ForecastDetails";
+import { Forecast } from "@/components/Forecast";
 
 export default function Home() {
   return (
@@ -15,8 +15,8 @@ export default function Home() {
       <section>
         <SearchBar />
       </section>
-      <main className="container mx-auto p-4">
-        <ForecastDetails />
+      <main className="w-[80%]  max-w-2xl mx-auto">
+        <Forecast />
       </main>
     </>
   );

@@ -9,7 +9,7 @@ interface Props {
 const SearchInput: React.FC<Props> = ({ onChange, placeholder, value }) => {
   return (
     <input
-      className="outline-none p-[2px] pl-[6px] flex-1 rounded-sm font-light text-gray-600"
+      className="outline-none p-1 pl-[6px] flex-1 rounded-tl-sm rounded-bl-sm font-light text-gray-600"
       type="text"
       onChange={onChange}
       placeholder={placeholder}

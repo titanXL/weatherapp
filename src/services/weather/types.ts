@@ -82,16 +82,22 @@ export type ForecastApiResponse =
   | ForecastApiResponseSuccess;
 
 export interface ForecastDetails {
-  temp: number;
-  icon: WeatherIcon;
-  description: string;
-  date: string;
+  [key: string]: {
+    temp_max: number;
+    temp_min: number;
+    icon: WeatherIcon;
+  };
 }
 
 export type ForecastData = Record<
   "forecast",
   {
     city: string;
-    details: Array<ForecastDetails>;
+    country: string;
+    details: ForecastDetails;
+    date: number;
+    description: string;
+    icon: WeatherIcon;
+    temp: number;
   }
 >;

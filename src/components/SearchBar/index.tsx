@@ -23,7 +23,7 @@ const SearchBar: React.FC<Props> = () => {
   };
 
   return (
-    <div className="bg-gray-200 p-2">
+    <div className="bg-gray-200 p-4">
       <form
         onSubmit={handleSubmit}
         className="m-auto flex items-center justify-center w-[90%] max-w-2xl"

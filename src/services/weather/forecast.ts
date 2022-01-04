@@ -6,6 +6,7 @@ import {
   ForecastData,
   ForecastDetails,
 } from "./types";
+import { getDate, getHours, getMonth, parseJSON } from "date-fns";
 
 export const getForecastForCity = async (
   city: string
@@ -33,17 +34,47 @@ export const getForecastForDefaultLocation = async (): Promise<
 const mapForecastResponseToDomain = (
   weatherData: ForecastApiResponseSuccess
 ): ForecastData => {
-  const forecastDetails: Array<ForecastDetails> = weatherData.list.map((d) => {
-    return {
-      temp: d.main.temp,
-      icon: d.weather[0].icon,
-      description: d.weather[0].description,
-      date: new Date(d.dt_txt).toISOString(),
-    };
-  });
+  const forecastDetails: any = weatherData.list.reduce<any>(
+    (groupedData, currentData) => {
+      const parsedDate = parseJSON(currentData.dt_txt);
+      const month = getMonth(parsedDate) + 1;
+      const day = getDate(parsedDate);
+      const hour = getHours(parsedDate);
+      const icon = currentData.weather[0].icon;
+      const key = `${day} / ${month}`;
+      const { temp_max, temp_min } = currentData.main;
+      if (groupedData[key]) {
+        groupedData[key].temp_max = Math.round(
+          Math.max(temp_max, groupedData[key].temp_max)
+        );
+        groupedData[key].temp_min = Math.round(
+          Math.min(temp_min, groupedData[key].temp_min)
+        );
+        groupedData[key].icon =
+          groupedData[key].hour < hour ? groupedData[key].icon : icon;
+      } else {
+        groupedData[key] = {
+          temp_max: Math.round(temp_max),
+          temp_min: Math.round(temp_min),
+          icon,
+        };
+      }
+      return groupedData;
+    },
+    {}
+  );
+
+  const closesForecast = {
+    date: weatherData.list[0].dt,
+    temp: weatherData.list[0].main.temp,
+    icon: weatherData.list[0].weather[0].icon,
+    description: weatherData.list[0].weather[0].description,
+  };
   return {
     forecast: {
       city: weatherData.city.name,
+      country: weatherData.city.country,
+      ...closesForecast,
       details: forecastDetails,
     },
   };
