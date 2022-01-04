@@ -20,8 +20,8 @@ const Toasty: React.FC<Props> = ({ toast }) => {
   }, []);
 
   return (
-    <div className="backdrop-blur-sm bg-slate-700 py-2 px-1 animate-slide-in flex items-center justify-between">
-      <span className="text-red-300 text-sm font-medium first-letter:capitalize">
+    <div className="backdrop-blur-sm bg-slate-500 py-2 px-1 animate-slide-in flex items-center justify-between">
+      <span className="text-white text-base font-light first-letter:capitalize">
         {toast.message}
       </span>
       <span className="cursor-pointer mr-2" onClick={() => clearToast(toast)}>
