@@ -4,13 +4,15 @@ import { WeatherIcon } from "@/components/WeatherIcon";
 import { roundNumber } from "@/utils/format/number";
 import { Divider } from "@/components/Divider";
 import { ForecastDetails } from "@/components/ForecastDetails";
+import { ForecastData } from "@/services/weather/types";
 
-const Forecast: React.FC = () => {
-  const { forecast } = useForecast();
+interface Props {
+  forecast: ForecastData["forecast"];
+}
 
-  if (!forecast) {
-    return null;
-  }
+const Forecast: React.FC<Props> = ({ forecast: defaultForecast }) => {
+  const { forecast: currentForecast } = useForecast();
+  const forecast = currentForecast || defaultForecast;
 
   return (
     <div className="p-4 flex flex-col">

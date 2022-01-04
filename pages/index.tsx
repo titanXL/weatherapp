@@ -2,8 +2,10 @@ import Head from "next/head";
 import { SearchBar } from "@/components/SearchBar";
 import { Toasts } from "@/containers/Toasts";
 import { Forecast } from "@/components/Forecast";
+import * as forecastService from "@/services/weather/forecast";
+import { ForecastData } from "@/services/weather/types";
 
-export default function Home() {
+export default function Home({ forecast }: ForecastData) {
   return (
     <>
       <Head>
@@ -16,17 +18,17 @@ export default function Home() {
         <SearchBar />
       </section>
       <main className="w-[80%]  max-w-2xl mx-auto">
-        <Forecast />
+        <Forecast forecast={forecast} />
       </main>
     </>
   );
 }
 
-// export async function getStaticProps() {
-//   const forecast = await forecastService.getForecastForCity("Sofia");
+export async function getStaticProps() {
+  const response = await forecastService.getForecastForDefaultLocation();
 
-//   return {
-//     props: forecast,
-//     revalidate: 10800, // 3 hours
-//   };
-// }
+  return {
+    props: response.value,
+    revalidate: 10800, // 3 hours
+  };
+}
