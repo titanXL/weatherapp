@@ -60,7 +60,7 @@ const mapForecastResponseToDomain = (
   );
 
   const closesForecast = {
-    date: weatherData.list[0].dt,
+    date: weatherData.list[0].dt_txt,
     temp: weatherData.list[0].main.temp,
     icon: weatherData.list[0].weather[0].icon,
     description: weatherData.list[0].weather[0].description,

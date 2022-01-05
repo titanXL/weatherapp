@@ -95,7 +95,7 @@ export type ForecastData = Record<
     city: string;
     country: string;
     details: ForecastDetails;
-    date: number;
+    date: string;
     description: string;
     icon: WeatherIcon;
     temp: number;

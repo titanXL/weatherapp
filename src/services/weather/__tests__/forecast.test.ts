@@ -20,7 +20,7 @@ jest.mock("../forecast", () => ({
         icon: "01d",
       },
     },
-    date: Date.now(),
+    date: Date.now().toLocaleString(),
   } as ForecastData["forecast"]),
 }));
 
