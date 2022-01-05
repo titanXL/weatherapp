@@ -1,8 +1,8 @@
-import { ForecastDetails } from "@/services/weather/types";
+import { ForecastDetails as ForecastDetailsType } from "@/services/weather/types";
 import { ForecastDetail } from "./forecast-detail";
 
 interface Props {
-  details: ForecastDetails;
+  details: ForecastDetailsType;
 }
 
 const ForecastDetails: React.FC<Props> = ({ details }) => {

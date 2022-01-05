@@ -1,12 +1,7 @@
 import { makeEntity, MappedEntity } from "./../utils";
-import api from "@/utils/api";
-import {
-  ForecastApiResponse,
-  ForecastApiResponseSuccess,
-  ForecastData,
-  ForecastDetails,
-} from "./types";
+import { ForecastApiResponseSuccess, ForecastData } from "./types";
 import { getDate, getHours, getMonth, parseJSON } from "date-fns";
+import api from "@/utils/api";
 
 export const getForecastForCity = async (
   city: string
@@ -65,7 +60,7 @@ const mapForecastResponseToDomain = (
   );
 
   const closesForecast = {
-    date: weatherData.list[0].dt,
+    date: weatherData.list[0].dt_txt,
     temp: weatherData.list[0].main.temp,
     icon: weatherData.list[0].weather[0].icon,
     description: weatherData.list[0].weather[0].description,
