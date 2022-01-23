@@ -27,6 +27,7 @@ const SearchBar: React.FC<Props> = () => {
       <form
         onSubmit={handleSubmit}
         className="m-auto flex items-center justify-center w-[90%] max-w-2xl"
+        data-cy="search-form"
       >
         <SearchInput
           value={city}

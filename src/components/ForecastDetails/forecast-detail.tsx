@@ -10,7 +10,7 @@ interface Props {
 
 const ForecastDetail: React.FC<Props> = ({ temp_max, temp_min, icon, day }) => {
   return (
-    <li className="flex items-center">
+    <li className="flex items-center" data-cy="forecast">
       <span className="text-lg font-light">{day}</span>
       <span className="ml-auto mr-1">
         <WeatherIcon type={icon} height={48} width={48} />

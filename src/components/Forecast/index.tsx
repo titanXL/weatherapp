@@ -19,7 +19,7 @@ const Forecast: React.FC<Props> = ({ forecast: defaultForecast }) => {
       <span className="text-red-600 font-light text-sm">
         {formatDate(forecast.date)}
       </span>
-      <span className="text-4xl font-bold mb-2">
+      <span className="text-4xl font-bold mb-2" data-cy="city">
         {forecast.city}, {forecast.country}
       </span>
       <div className="flex mx-auto items-end mb-6">
