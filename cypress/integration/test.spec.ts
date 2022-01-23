@@ -35,5 +35,3 @@ describe("Weather app", () => {
       .should("have.length", 6);
   });
 });
-
-export {};
